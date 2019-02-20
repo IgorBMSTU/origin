@@ -96,7 +96,7 @@ function os::build::environment::release::workingdir() {
   set -o errexit
   # get working directory
   local container
-  container="$(docker create "${release_image}")"
+  container="$(docker create "${release_image}" ping)"
   local workingdir
   workingdir="$(docker inspect -f '{{ index . "Config" "WorkingDir" }}' "${container}")"
   docker rm "${container}" > /dev/null
